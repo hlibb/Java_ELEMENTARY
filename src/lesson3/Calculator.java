@@ -43,8 +43,8 @@ public class Calculator {
         System.out.println("Repeat? (y - yes, another button for exit)");
         String answer = scannerLine.nextLine();
         System.out.println(answer);
-        if (scannerLine.hasNext("y")) start();
-        else end();
+        if (scannerLine.hasNext("exit")) end();
+        else start();
     }
 
     public static void end() {
