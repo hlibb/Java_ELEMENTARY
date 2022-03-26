@@ -1,9 +1,6 @@
 package lesson3;
 
 
-import java.util.Arrays;
-import java.util.Objects;
-
 public class Script {
     public static void main(String[] args) {
         String script = "ZюукяДZіботZ,ежобZощZяZенZ!ьлаксом";
