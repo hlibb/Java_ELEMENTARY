@@ -5,17 +5,8 @@ import java.util.Scanner;
 public class Calculator {
     private double currentValue = 0;
 
-    public double getValue() {
-        return currentValue;
-    }
-
     public double sum(double num1, double num2) {
         currentValue = num1 + num2;
-        return currentValue;
-    }
-
-    public double sum(double num1) {
-        currentValue += num1;
         return currentValue;
     }
 
@@ -24,28 +15,13 @@ public class Calculator {
         return currentValue;
     }
 
-    public double subtraction(double num1) {
-        currentValue -= num1;
-        return currentValue;
-    }
-
     public double multiplication(double num1, double num2) {
         currentValue = num1 * num2;
         return currentValue;
     }
 
-    public double multiplication(double num1) {
-        currentValue *= num1;
-        return currentValue;
-    }
-
     public double division(double num1, double num2) {
         currentValue = num1 / num2;
-        return currentValue;
-    }
-
-    public double division(double num1) {
-        currentValue /= num1;
         return currentValue;
     }
 
