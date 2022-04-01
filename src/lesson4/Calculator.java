@@ -5,6 +5,12 @@ import java.util.Scanner;
 public class Calculator {
     private double currentValue = 0;
 
+    public Calculator() {}
+
+    public Calculator(double currentValue) {
+        this.currentValue = currentValue;
+    }
+
     public double sum(double num1, double num2) {
         currentValue = num1 + num2;
         return currentValue;
