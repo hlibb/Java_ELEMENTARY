@@ -24,16 +24,12 @@ public class ArrayTask {
         return compliedWord.toString();
     }
 
-    public boolean areEqual(String stringWord1, String stringWord2) {
-        return stringWord1.equals(stringWord2);
-    }
-
     public void launch() {
         System.out.println("Enter two strings to compare (use space to split the string):");
 //        System.out.println("Enter the first word array: ");  doesn't work after first loop, how to improve?
         while (!sc.hasNext("exit")) {
             getWord();
-            System.out.println(areEqual(complyWord(word1), complyWord(word2)));
+            System.out.println(complyWord(word1).equals(complyWord(word2)));
         }
     }
 
