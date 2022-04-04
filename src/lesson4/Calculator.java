@@ -4,8 +4,13 @@ import java.util.Scanner;
 
 public class Calculator {
     private double currentValue = 0;
+    private final String[] commands = new String[]{"+", "-", "*", "/"};
+    private final String[] controlCommands = new String[]{"c", "<-"};
+    private final String[] numbers = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private final char[] numbersToChar = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-    public Calculator() {}
+    public Calculator() {
+    }
 
     public Calculator(double currentValue) {
         this.currentValue = currentValue;
@@ -33,7 +38,7 @@ public class Calculator {
 
     public void commandC() {
         currentValue = 0;
-        calculatorLook(currentValue);
+        calculatorLook();
     }
 
     public void commandBackspace() { //only for currentValue
@@ -50,17 +55,16 @@ public class Calculator {
                 }
                 numberStrEdited = numberStrEdited.substring(0, numberStr.length() - (i + 1));
                 currentValue = Double.parseDouble(numberStrEdited);
-                calculatorLook(currentValue);
+                calculatorLook();
                 break;
             }
         }
         if (!(numberStr.toCharArray()[numberStr.length() - 1] == '.' | numberStr.toCharArray()[numberStr.length() - 1] == '0')) {
             String numberStrEdited = numberStr.substring(0, numberStr.length() - (i + 1));
             currentValue = Double.parseDouble(numberStrEdited);
-            calculatorLook(currentValue);
+            calculatorLook();
         }
     }
-
 
     public boolean stringIsDouble(String string) {
         char[] stringInCharArray = string.toCharArray();
@@ -71,38 +75,35 @@ public class Calculator {
             return false;
         }
         for (int i = 0; i < string.length(); i++) {
-            if (stringInCharArray[i] == ('1')
-                    | (stringInCharArray[i] == ('2')
-                    | stringInCharArray[i] == ('3')
-                    | stringInCharArray[i] == ('4')
-                    | stringInCharArray[i] == ('5')
-                    | stringInCharArray[i] == ('6')
-                    | stringInCharArray[i] == ('7')
-                    | stringInCharArray[i] == ('8')
-                    | stringInCharArray[i] == ('9')
-                    | stringInCharArray[i] == ('0'))) isDouble = true;
+            if (isNumber(stringInCharArray[i])) isDouble = true;
             else if (stringInCharArray[i] == ('.')) {
                 if (countOfComas < 1) {
                     countOfComas++;
                 } else System.err.println("Too many comas in your double value!");
-            }
-            else return false;
+            } else return false;
         }
         return isDouble;
     }
 
+    private boolean isNumber(char number) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbersToChar[i] == number) return true;
+        }
+        return false;
+    }
+
     public boolean isCommand(String command) {
-        return switch (command) {
-            case ("+"), ("-"), ("*"), ("/") -> true;
-            default -> false;
-        };
+        for (String s : commands) {
+            if (s.equals(command)) return true;
+        }
+        return false;
     }
 
     public boolean isControlCommand(String controlCommand) {
-        return switch (controlCommand) {
-            case  ("c"), ("<-")-> true;
-            default -> false;
-        };
+        for (String s : controlCommands) {
+            if (s.equals(controlCommand)) return true;
+        }
+        return false;
     }
 
     public void useCommand(double currentValue, String command, double secondNumber) {
@@ -127,15 +128,11 @@ public class Calculator {
     }
 
     public void useControlCommand(String controlCommand) {
-        switch (controlCommand) {
-            case ("c"): {
-                commandC();
-                break;
-            }
-            case ("<-"): {
-                commandBackspace();
-                break;
-            }
+        if (controlCommand.equals("c")) {
+            commandC();
+        }
+        if (controlCommand.equals("<-")) {
+            commandBackspace();
         }
     }
 
@@ -145,13 +142,13 @@ public class Calculator {
             String strIn = sc.nextLine();
             if (stringIsDouble(strIn)) {
                 currentValue = Double.parseDouble((strIn));
-                calculatorLook(currentValue);
+                calculatorLook();
             } else if (isCommand(strIn)) {
                 String secondNumberStr = sc.nextLine();
                 if (stringIsDouble(secondNumberStr)) {
                     double secondNumber = Double.parseDouble(secondNumberStr);
                     useCommand(currentValue, strIn, secondNumber);
-                    calculatorLook(currentValue);
+                    calculatorLook();
                 }
             } else if (isControlCommand(strIn)) {
                 useControlCommand(strIn);
@@ -159,22 +156,20 @@ public class Calculator {
         }
     }
 
-    public void calculatorLook(double currentValue) {
-        System.out.printf(
-                        " ----------------\n" +
-                        "|%15.2f |\n" +
-                        "| c   /   *   <- |\n" +
-                        "| 1   2   3   -  |\n" +
-                        "| 4   5   6   +  |\n" +
-                        "| 7   8   9      |\n" +
-                        "|     0   ,      |\n" +
-                        " ----------------\n"
-                , currentValue);
+    public void calculatorLook() {
+        System.out.printf(" ----------------\n" +
+                "|%15.2f |\n" +
+                "| c   /   *   <- |\n" +
+                "| 1   2   3   -  |\n" +
+                "| 4   5   6   +  |\n" +
+                "| 7   8   9      |\n" +
+                "|     0   ,      |\n" +
+                " ----------------\n", this.currentValue);
     }
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        calculator.calculatorLook(calculator.currentValue);
+        calculator.calculatorLook();
         calculator.launch();
     }
 }
