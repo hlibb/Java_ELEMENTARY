@@ -8,6 +8,14 @@ public class Calculator {
     private final String[] controlCommands = new String[]{"c", "<-"};
     private final String[] numbers = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private final char[] numbersToChar = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+/*    public String lookLike = String.format(" ----------------\n" +
+            "|%15.2f |\n" +
+            "| c   /   *   <- |\n" +
+            "| 1   2   3   -  |\n" +
+            "| 4   5   6   +  |\n" +
+            "| 7   8   9      |\n" +
+            "|     0   ,      |\n" +
+            " ----------------\n", this.currentValue);*/ // doesn't work
 
     public Calculator() {
     }
@@ -169,6 +177,8 @@ public class Calculator {
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
+//        calculator.currentValue = 100;
+//        System.out.println(calculator.lookLike); //doesn't work
         calculator.calculatorLook();
         calculator.launch();
     }

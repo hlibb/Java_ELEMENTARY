@@ -10,7 +10,6 @@ public class ArrayTask {
 
     public void getWord() {
         word1 = sc.nextLine().split(" ");
-//        System.out.println("Enter the second word array: ");
         word2 = sc.nextLine().split(" ");
         System.out.print("1st -> " + Arrays.toString(word1) + "\t");
         System.out.println("2nd -> " + Arrays.toString(word2));
@@ -25,12 +24,13 @@ public class ArrayTask {
     }
 
     public void launch() {
-        System.out.println("Enter two strings to compare (use space to split the string):");
-//        System.out.println("Enter the first word array: ");  doesn't work after first loop, how to improve?
-        while (!sc.hasNext("exit")) {
+        boolean goNext = true;
+        do {
+            System.out.println("Enter two strings to compare (use space to split the string):");
+            if (sc.hasNext("exit")) goNext = false;
             getWord();
             System.out.println(complyWord(word1).equals(complyWord(word2)));
-        }
+        } while (goNext);
     }
 
     public static void main(String[] args) {
@@ -38,4 +38,3 @@ public class ArrayTask {
         arrayTask.launch();
     }
 }
-
