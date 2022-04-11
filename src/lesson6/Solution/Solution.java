@@ -40,7 +40,7 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{65,44,72,15};
+        int[] nums = new int[]{5, 1, 3, 2};
         Solution s = new Solution();
         System.out.println(Arrays.toString(s.decompressRLElist(nums)));
     }
