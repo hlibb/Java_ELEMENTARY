@@ -1,5 +1,6 @@
 package lesson5.LeetcodeTask;
 
+/*
 <<<<<<< HEAD
 class Solution {
     public int[] runningSum(int[] nums) {
@@ -43,3 +44,4 @@ public class Solution {
     }
 }
 >>>>>>> lesson4
+*/
