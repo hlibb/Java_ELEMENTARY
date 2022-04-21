@@ -1,5 +1,6 @@
 package lesson7.Cars;
 
+/*
 public abstract class Car {
     protected boolean isWorking;
     protected final int fuelCapacity;
@@ -44,3 +45,4 @@ public abstract class Car {
 
 
 }
+*/
